@@ -8,32 +8,23 @@ class Wdfms {
      * Admin function loader.
      */
     public function load_admin(){
+        // enqueue 
+        require_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-admin-enqueue.php';              
+        $wdfms_admin_enqueue = new Wdfms_Admin_Enqueue();         
+        add_action('admin_enqueue_scripts', array($wdfms_admin_enqueue, 'load'));
         
-        require_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-admin.php';              
-        $wdfms_admin = new Wdfms_Admin(); 
-
-        // enqueue admin scripts.
-        // add_action('admin_enqueue_scripts', array($wdfms_admin, 'enqueue'));
-        
-        // add admin menu.
-        // add_action('admin_menu', array($wdfms_admin, 'menu'));    
+        // menu
+        require_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-admin-menu.php';              
+        $wdfms_admin_menu = new Wdfms_Admin_Menu();
+        add_action('admin_menu', array($wdfms_admin_menu, 'load'));    
                       
         // mics functions
-        // require_once WDFMS_PLUGIN_DIR . 'include/wdfms-functions.php'; 
+        require_once WDFMS_PLUGIN_DIR . 'include/wdfms-functions.php'; 
         
         // load options
         require_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-option.php'; 
         $wdfms_option = new Wdfms_Option();       
         // add_action('admin_init', array($wdfms_option, 'load'));
-
-        // Remove Jquery Migrate: as it is not required
-        // add_filter( 'wp_default_scripts', $af = static function( &$scripts) {         
-        //     $scripts->remove( 'jquery');
-        //     $scripts->add( 'jquery', false, array( 'jquery-core' ), '1.12.4' );           
-        // }, PHP_INT_MAX );
-        // unset( $af );
-
-
         
     }
     

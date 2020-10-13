@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Admin Setting
+ * All forms data
  */
-class Wdfms_Admin_Setting
+class Wdfms_Admin_all_forms
 {
 	
 	public function update(){
