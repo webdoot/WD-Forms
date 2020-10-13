@@ -25,4 +25,15 @@ class Wdfms_Admin_Enqueue {
         }
 	}
 
+
+    public function run(){  
+        // Enqueue scripts
+        add_action('wp_enqueue_scripts', array($this, 'load'));        
+
+    }
+
 }
+
+// class loader
+$wdfms_admin_enqueue = new Wdfms_Admin_Enqueue(); 
+$wdfms_admin_enqueue->run();

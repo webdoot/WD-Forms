@@ -1,7 +1,6 @@
 <?php
 
 
-
 class Wdfms {
 
 	/*
@@ -10,13 +9,9 @@ class Wdfms {
     public function load_admin(){
         // enqueue 
         require_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-admin-enqueue.php';              
-        $wdfms_admin_enqueue = new Wdfms_Admin_Enqueue();         
-        add_action('admin_enqueue_scripts', array($wdfms_admin_enqueue, 'load'));
         
         // menu
-        require_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-admin-menu.php';              
-        $wdfms_admin_menu = new Wdfms_Admin_Menu();
-        add_action('admin_menu', array($wdfms_admin_menu, 'load'));    
+        require_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-admin-menu.php';  
                       
         // mics functions
         require_once WDFMS_PLUGIN_DIR . 'include/wdfms-functions.php'; 
@@ -32,7 +27,8 @@ class Wdfms {
      * Public function loader
      */
     public function load_public(){
-              
+        // shortcode
+        require_once WDFMS_PLUGIN_DIR . 'public/shortcode/admission-form.php';  
     }
     
     public function run(){

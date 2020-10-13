@@ -14,7 +14,7 @@
  */
 
 
-defined( 'ABSPATH' ) || die();
+defined( 'ABSPATH' ) || exit;
 
 define('WDFMS_VERSION', '1.0.0' );
 define('WDFMS_BASENAME', plugin_basename(__FILE__));   // used in plugin custome links.
