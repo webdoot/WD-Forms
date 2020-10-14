@@ -12,23 +12,23 @@ class Wdfms_Admin_Enqueue {
         wp_enqueue_script( 'custom-admin-js', WDFMS_PLUGIN_URL . '/asset/js/custom-admin.js', array(), WDFMS_VERSION, true );
 
 		// Loader only on plugin page
-        if ($GLOBALS['parent_file'] == WDFMS_BASEPAGE) {
-        	wp_enqueue_style( 'pace', WDFMS_PLUGIN_URL . '/asset/css/pace.css', array(), WDFMS_VERSION, 'all' );
+        // if ($GLOBALS['parent_file'] == WDFMS_BASEPAGE) {
+        // 	wp_enqueue_style( 'pace', WDFMS_PLUGIN_URL . '/asset/css/pace.css', array(), WDFMS_VERSION, 'all' );
 
-        	wp_enqueue_style( 'dataTable', WDFMS_PLUGIN_URL . '/asset/css/dataTables.min.css', array(), WDFMS_VERSION, 'all' );
+        // 	wp_enqueue_style( 'dataTable', WDFMS_PLUGIN_URL . '/asset/css/dataTables.min.css', array(), WDFMS_VERSION, 'all' );
 
-        	wp_enqueue_script( 'pace-min-js', WDFMS_PLUGIN_URL . '/asset/js/pace.min.js', array(), WDFMS_VERSION, false ); 
+        // 	wp_enqueue_script( 'pace-min-js', WDFMS_PLUGIN_URL . '/asset/js/pace.min.js', array(), WDFMS_VERSION, false ); 
 
-        	wp_enqueue_script( 'notify-min-js', WDFMS_PLUGIN_URL . '/asset/js/notify.min.js', array('jquery-3.4'), WDFMS_VERSION, false ); 
+        // 	wp_enqueue_script( 'notify-min-js', WDFMS_PLUGIN_URL . '/asset/js/notify.min.js', array('jquery-3.4'), WDFMS_VERSION, false ); 
 
-        	wp_enqueue_script( 'dataTable-js', WDFMS_PLUGIN_URL . '/asset/js/dataTables.min.js', array('jquery-3.4'), WDFMS_VERSION, true ); 
-        }
+        // 	wp_enqueue_script( 'dataTable-js', WDFMS_PLUGIN_URL . '/asset/js/dataTables.min.js', array('jquery-3.4'), WDFMS_VERSION, true ); 
+        // }
 	}
 
 
     public function run(){  
         // Enqueue scripts
-        add_action('wp_enqueue_scripts', array($this, 'load'));        
+        add_action('admin_enqueue_scripts', array($this, 'load'));        
 
     }
 

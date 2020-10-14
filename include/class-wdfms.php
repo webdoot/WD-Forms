@@ -27,7 +27,10 @@ class Wdfms {
      * Public function loader
      */
     public function load_public(){
-        // shortcode
+        // enqueue 
+        require_once WDFMS_PLUGIN_DIR . 'public/class-wdfms-public-enqueue.php';    
+
+        // shortcodes
         require_once WDFMS_PLUGIN_DIR . 'public/shortcode/admission-form.php';  
     }
     
