@@ -20,7 +20,7 @@ define('WDFMS_VERSION', '1.0.0' );
 define('WDFMS_BASENAME', plugin_basename(__FILE__));   // used in plugin custome links.
 define('WDFMS_BASEPAGE', 'wd-forms');   				// plugin page parmalink
 define('WDFMS_PLUGIN_DIR', plugin_dir_path(__FILE__));     // output trailing slash.
-define('WDFMS_PLUGIN_URL', plugins_url() . '/' . WDFMS_BASEPAGE);   
+define('WDFMS_PLUGIN_URL', plugins_url() . '/' . WDFMS_BASEPAGE);      
 
 /*
  * Activation.

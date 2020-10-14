@@ -3,13 +3,14 @@
 defined( 'ABSPATH' ) || exit;
 
 // Add Shortcode
-add_shortcode( 'wdfms-admission-form', 'wdfms_shortcode_admission_form' );
+add_shortcode( 'wdfms-admission-form-view', 'wdfms_shortcode_admission_form_view' );
 
-function wdfms_shortcode_admission_form() {  
+function wdfms_shortcode_admission_form_view() {  
 return
 	
 '
 <div class="w3-container w3-padding-32 w3-border">
+
   <h2 class=" w3-center"><b><u> APPLICATION FORM </u></b></h2>
 
   <form>

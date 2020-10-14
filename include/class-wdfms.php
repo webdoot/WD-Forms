@@ -17,8 +17,8 @@ class Wdfms {
         require_once WDFMS_PLUGIN_DIR . 'include/wdfms-functions.php'; 
         
         // load options
-        require_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-option.php'; 
-        $wdfms_option = new Wdfms_Option();       
+        require_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-options.php'; 
+        $wdfms_options = new Wdfms_Options();       
         // add_action('admin_init', array($wdfms_option, 'load'));
         
     }
@@ -31,7 +31,10 @@ class Wdfms {
         require_once WDFMS_PLUGIN_DIR . 'public/class-wdfms-public-enqueue.php';    
 
         // shortcodes
+        // require_once WDFMS_PLUGIN_DIR . 'public/shortcode/test.php'; 
         require_once WDFMS_PLUGIN_DIR . 'public/shortcode/admission-form.php';  
+        require_once WDFMS_PLUGIN_DIR . 'public/shortcode/admission-form-view.php';  
+         
     }
     
     public function run(){

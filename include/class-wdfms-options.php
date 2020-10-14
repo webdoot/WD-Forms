@@ -4,7 +4,7 @@
  * Options manager
  */
 
-class Wdfms_Option {
+class Wdfms_Options {
 	// Add Options plugin activation
 	public static function add(){
 		// add_option( string $option, mixed $value = '', string $deprecated = '', string|bool $autoload = 'yes' );
@@ -15,7 +15,7 @@ class Wdfms_Option {
 	}
 
 	// Delete option on plugin uninstall
-	public static function delete(){
+	public static function remove(){
 		// Panel option
 		// delete_option('wdschool_panel');
 
