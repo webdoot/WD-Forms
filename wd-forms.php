@@ -25,13 +25,13 @@ define('WDFMS_PLUGIN_URL', plugins_url() . '/' . WDFMS_BASEPAGE);
 /*
  * Activation.
  */
-require_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-activator.php';
+include_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-activator.php';
 register_activation_hook( __FILE__, array('Wdfms_Activator', 'activate') );
 
 /*
  * Deactivation.
  */
-require_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-deactivator.php';
+include_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-deactivator.php';
 register_deactivation_hook( __FILE__, array('Wdfms_Deactivator', 'deactivate') );
 
 /*

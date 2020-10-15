@@ -9,11 +9,12 @@ class Wdfms_Pages {
 	public static function add(){
 		
 	  	$pages=array(
-		                "Admission Form New" => "[ Do not edit this page ]",		// "Title" => "Content"
-		                "Admission Form View" => "[ Do not edit this page ]"                    
-	             	);
+		                "Admission Form New" => "[wdfms-admission-form]",		// "Title" => "Content"
+		                "Admission Form View" => "[wdfms-admission-form-view]"                    
+	             	);	  	
 	
-        // x---- Need not to edit below this ----x			 
+        // x---- Need not to edit below this ----x	
+        $order = 100;       // set page order onwards		 
 		$page_ids = array();
 		
         // db connection.
@@ -34,6 +35,7 @@ class Wdfms_Pages {
                 $page['post_status']	= "publish";
                 $page['post_name']		= $page_slug ;
                 $page['post_type']		= "page";
+                $page['menu_order']		= $order++;			// page order
 
                 /// Insert a post into "wp_posts" table. Takes argument in array. Return post id. 			
 	       		$page_ids[] = wp_insert_post($page);
@@ -49,22 +51,18 @@ class Wdfms_Pages {
 	}
 
 
-	// remove pages & option on plugin uninstall
-	public static function remove(){
-		
+	// remove pages & option on plugin uninstall. (not to edit)
+	public static function remove(){		
 		if (!empty(get_option('wdfms_default_pages'))) {			
-                    $page_ids = get_option('wdfms_default_pages');	
+            $page_ids = get_option('wdfms_default_pages');	
 
-                    // remove pages
-                    foreach ($page_ids as $page_id){
-                            wp_delete_post($page_id, true);			
-                    }
-
-                    // remove options
-                    delete_option('wdfms_default_pages');	
+            // remove pages
+            foreach ($page_ids as $page_id){
+                    wp_delete_post($page_id, true);			
             }
 
+            // remove options
+            delete_option('wdfms_default_pages');	
+        }
 	}
-	
-
 }

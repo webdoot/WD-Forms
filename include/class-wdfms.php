@@ -8,16 +8,16 @@ class Wdfms {
      */
     public function load_admin(){
         // enqueue 
-        require_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-admin-enqueue.php';              
+        include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-admin-enqueue.php';              
         
         // menu
-        require_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-admin-menu.php';  
+        include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-admin-menu.php';  
                       
         // mics functions
-        require_once WDFMS_PLUGIN_DIR . 'include/wdfms-functions.php'; 
+        include_once WDFMS_PLUGIN_DIR . 'include/wdfms-functions.php'; 
         
         // load options
-        require_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-options.php'; 
+        include_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-options.php'; 
         $wdfms_options = new Wdfms_Options();       
         // add_action('admin_init', array($wdfms_option, 'load'));
         
@@ -28,12 +28,12 @@ class Wdfms {
      */
     public function load_public(){
         // enqueue 
-        require_once WDFMS_PLUGIN_DIR . 'public/class-wdfms-public-enqueue.php';    
+        include_once WDFMS_PLUGIN_DIR . 'public/wdfms-public-enqueue.php';    
 
-        // shortcodes
-        // require_once WDFMS_PLUGIN_DIR . 'public/shortcode/test.php'; 
-        require_once WDFMS_PLUGIN_DIR . 'public/shortcode/admission-form.php';  
-        require_once WDFMS_PLUGIN_DIR . 'public/shortcode/admission-form-view.php';  
+        // shortcodes 
+        include_once WDFMS_PLUGIN_DIR . 'public/shortcode/admission-form.php';  
+        include_once WDFMS_PLUGIN_DIR . 'public/shortcode/admission-form-view.php'; 
+
          
     }
     
