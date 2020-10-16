@@ -10,13 +10,15 @@ function wdfms_shortcode_admission_form () { ?>
 <div class="w3-container w3-padding-32 w3-border">
   <h2 class=" w3-center"><b><u> APPLICATION FORM </u></b></h2>
 
-  <form>
+  <form id="admission_form" action= <?php echo admin_url('admin-ajax.php'); ?> method="post" enctype="multipart/form-data">    
+    <?php  wp_nonce_field( 'nonce_action', 'nonce_field' );  ?>  
+
     <div class="w3-row-padding w3-padding-24">
       <div class="w3-col" style="width: 140px">
         <label class="w3-right">Select Course</label>
       </div>
       <div class="w3-half">      
-        <select class="w3-select w3-border" name="option">
+        <select class="w3-select w3-border" name="course">
           <option value="" disabled selected>Choose your course</option>
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
@@ -147,6 +149,7 @@ function wdfms_shortcode_admission_form () { ?>
 
     <div class="w3-row-padding w3-padding-16">
       <div class="w3-col">
+        <input type="hidden" name="action" value="admission_form_submit">
         <button type="submit" class="w3-btn w3-white w3-border w3-margin-bottom w3-col m2">Cancel </button>
         <button type="submit" class="w3-btn w3-teal w3-right w3-col m4">Save & Proceed &nbsp; > </button>
       </div>

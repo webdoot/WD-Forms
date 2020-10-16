@@ -8,7 +8,7 @@ class Wdfms {
      */
     public function load_admin(){
         // enqueue 
-        include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-admin-enqueue.php';              
+        include_once WDFMS_PLUGIN_DIR . 'admin/wdfms-admin-enqueue.php';              
         
         // menu
         include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-admin-menu.php';  
@@ -34,6 +34,8 @@ class Wdfms {
         include_once WDFMS_PLUGIN_DIR . 'public/shortcode/admission-form.php';  
         include_once WDFMS_PLUGIN_DIR . 'public/shortcode/admission-form-view.php'; 
 
+        // form process
+        include_once WDFMS_PLUGIN_DIR . 'public/wdfms-admission-form-process.php';  
          
     }
     

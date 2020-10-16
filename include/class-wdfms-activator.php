@@ -5,9 +5,9 @@ class Wdfms_Activator {
 	
 	public static function activate() {
 
-		// table creation
-		// require_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-db.php';		
-        // Wdfms_DB::create_tables();
+		// create table
+		require_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-db.php';		
+        Wdfms_DB::create_tables();
 
         // table seed
         // require_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-seeder.php';
