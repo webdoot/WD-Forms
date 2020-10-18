@@ -120,7 +120,7 @@ function wdfms_shortcode_admission_form () { ?>
     <div class="w3-row-padding w3-padding-16">
       <div class="w3-third">
         <label>Mobile no (*)</label>
-        <input class="w3-input w3-border" type="number" name="mob_1" value="" placeholder="Mobile no" required>
+        <input class="w3-input w3-border" type="number" name="mobile" value="" placeholder="Mobile no" required>
       </div>
 
       <div class="w3-twothird">

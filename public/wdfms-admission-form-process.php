@@ -12,32 +12,48 @@ function wdfms_admission_form_process(){
 		
 		// Sritps "\" from the post data.
 		if ( get_magic_quotes_gpc() ) {
-		    $_POST      = array_map( 'stripslashes_deep', $_POST );
+		    $_POST = array_map( 'stripslashes_deep', $_POST );
 		}
-        
-		$course   = isset($_POST['course'])    		? sanitize_text_field($_POST['course']) 	 : '' ;
-        $name     = isset($_POST['name'])       	? sanitize_text_field($_POST['name'])        : '' ;
-        $aadhaar  = isset($_POST['aadhaar'])    	? sanitize_text_field($_POST['aadhaar'])     : '' ;
-        $f_name	  = isset($_POST['f_name'])     	? sanitize_text_field($_POST['f_name'])      : '' ;
-        $m_name	  = isset($_POST['m_name']) 		? sanitize_text_field($_POST['m_name'])  	 : '' ;
-        $dob	  = isset($_POST['dob']) 			? esc_url_raw        ($_POST['dob']) 		 : '' ;
-        $gender	  = isset($_POST['gender'])       	? sanitize_text_field($_POST['gender'])   	 : '' ;
-        $c_category	= isset($_POST['c_category']) 	? sanitize_text_field($_POST['c_category'])  : '' ;
-        $religion = isset($_POST['religion'])    	? sanitize_text_field($_POST['religion'])  	 : '' ;
-        $m_status = isset($_POST['m_status'])    	? sanitize_text_field($_POST['m_status'])  	 : '' ;
-        $disability = isset($_POST['disability']) 	? sanitize_text_field($_POST['disability'])  : '' ;
-        $mob_1	  = isset($_POST['mob']) 		 	? sanitize_text_field ($_POST['mob']) 		 : '' ;
-        $email	  = isset($_POST['email'])       	? sanitize_email($_POST['email'])     		 : '' ;
-        $education_q = isset($_POST['education_q']) ? sanitize_text_field($_POST['education_q']) : '' ;
-        $technical_q = isset($_POST['technical_q']) ? sanitize_text_field($_POST['technical_q']) : '' ;
+
+		// form data
+        $fields = [
+        	'course'      => sanitize_text_field($_POST['course']) 		,
+	        'name'        => sanitize_text_field($_POST['name']) 		,
+	        'aadhaar'     => sanitize_text_field($_POST['aadhaar']) 	,
+	        'f_name'	  => sanitize_text_field($_POST['f_name']) 		,
+	        'm_name'	  => sanitize_text_field($_POST['m_name']) 		,
+	        'dob'	      => preg_replace("([^0-9/])", "", $_POST['dob']) ,
+	        'gender'	  => sanitize_text_field($_POST['gender']) 		,
+	        'c_category'  => sanitize_text_field($_POST['c_category']) 	,
+	        'religion'    => sanitize_text_field($_POST['religion']) 	,
+	        'm_status'    => sanitize_text_field($_POST['m_status']) 	,
+	        'disability'  => sanitize_text_field($_POST['disability']) 	,
+	        'mobile'      => sanitize_text_field($_POST['mobile']) 		,
+	        'email'	      => sanitize_email	 ($_POST['email']) 			,
+	        'education_q' => sanitize_text_field($_POST['education_q']) ,
+	        'technical_q' => sanitize_text_field($_POST['technical_q']) ,
+        ];
 
 		global $wpdb;
-       	// Table name in which data to be inserted/deleted.
-       	$table_name = $wpdb->prefix . 'gd_game';       
+       	// Table
+       	$table = $wpdb->prefix . 'wdfms_forms_data';  
+
+       	// form id
+       	$form_id = 2;  
+
+       	// field - form_id max value
+		$max_entry_id = max($wpdb->get_col($wpdb->prepare( "SELECT entry_id FROM {$table}")));
+		$max_entry_id = (!empty($max_entry_id)) ? $max_entry_id : 0;
+		$new_entry_id = $max_entry_id + 1;     // new entry id
+
+		// insert into table
+		foreach ($fields as $key => $value) {
+       		$wpdb->insert( $table, array( 'form_id' => $form_id, 'entry_id' => $new_entry_id, 'field' => $key, 'value' => $value ), array( '%d', '%d', '%s', '%s' ) ); 
+       	}
        	
-
-        wp_send_json( $_POST, 200);                              // response
-    }
-
-    wp_die();
+       	// response
+        wp_send_json( 'success', 200);                 
+		
+    } 	// verify_nonce
+    
 }
