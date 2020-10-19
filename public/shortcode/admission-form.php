@@ -6,8 +6,8 @@
 
 add_shortcode( 'wdfms-admission-form', 'wdfms_shortcode_admission_form'); 
 function wdfms_shortcode_admission_form () { ?>
-
   <wdfms-admission-form>
+    
     <div class="w3-container w3-padding-32 w3-border">
       <h2 class=" w3-center"><b><u> APPLICATION FORM </u></b></h2>
 
@@ -158,16 +158,6 @@ function wdfms_shortcode_admission_form () { ?>
       </form>    
 
     </div>
+
   </wdfms-admission-form>
-
-  <wdfms-admission-form-message style="display: none">
-    <div class="w3-container w3-padding-32 w3-border">
-      <div class="w3-panel w3-border w3-round-large w3-pale-green w3-text-green w3-hover-text-teal w3-padding-32" style="font-weight: 600">
-        <p> <span class="dashicons dashicons-yes-alt"></span> Application successfully submitted. </p>
-        <p> Note: Your application no: 452552 and mobile no: 562636. </p>
-        <p> Status can be checked at - </p>
-      </div>
-    </div> 
-  </wdfms-admission-form-message>
-
 <?php } ?>
