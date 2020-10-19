@@ -7,7 +7,7 @@
 add_shortcode( 'wdfms-admission-form', 'wdfms_shortcode_admission_form'); 
 function wdfms_shortcode_admission_form () { ?>
   <wdfms-admission-form>
-    
+
     <div class="w3-container w3-padding-32 w3-border">
       <h2 class=" w3-center"><b><u> APPLICATION FORM </u></b></h2>
 
@@ -140,6 +140,20 @@ function wdfms_shortcode_admission_form () { ?>
             <input class="w3-input w3-border" type="text" name="technical_q" value="" placeholder="Technical Qualification" >
           </div>
         </div>
+
+        <div class="w3-row-padding w3-padding-16">
+          <div class="w3-third">          
+            <img id="amfm_photo" src="<?php echo WDFMS_PLUGIN_URL . '/asset/images/default-image.png' ; ?>" class=" w3-border w3-padding" alt="photo">  
+          </div>         
+          <div class="w3-twothird">
+            <label>Upload your photo (*) </label>
+            <input type="file" name="photo" accept="image/jpeg, image/png" onchange="amfmURL(this);">
+            <br>
+            <label><small>(File format jpg/jpeg/png, max size 200Kb)</small></label>
+            <br>
+            <label id="amfm_error" class="w3-text-red"></label>
+          </div>
+        </div>
         
         <div class="w3-row-padding w3-padding-16">
           <div class="w3-col">
@@ -151,7 +165,7 @@ function wdfms_shortcode_admission_form () { ?>
         <div class="w3-row-padding w3-padding-16">
           <div class="w3-col">
             <input type="hidden" name="action" value="admission_form_submit">
-            <button type="submit" class="w3-btn w3-white w3-border w3-margin-bottom w3-col m2">Cancel </button>
+            <button type="reset" class="w3-btn w3-white w3-border w3-margin-bottom w3-col m2">Reset </button>
             <button type="submit" class="w3-btn w3-teal w3-right w3-col m4">Save & Proceed &nbsp; > </button>
           </div>
         </div>  
