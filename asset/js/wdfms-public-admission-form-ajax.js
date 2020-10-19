@@ -4,19 +4,24 @@
 
 jQuery(document).ready(function($){
   $('form#admission_form').ajaxForm({
-      success: function(response){
-        console.log(response);
-      },
 
-      error: function(response){
-        console.log(response);
-      },
+        success: function(response){
+            $('wdfms-admission-form').hide();
+            $('wdfms-admission-form-message').show();
+        },
 
-      uploadProgress(event, position, total, percentComplete){
-        console.log(percentComplete);
-      }
+        // error: function(response){
+        //     console.log(response);
+        // },
 
-      resetForm: true
+        // uploadProgress(event, position, total, percentComplete){
+        //     console.log(percentComplete);
+        // },
 
-  });
+        // resetForm: true
+    });
+
+
+
+
 });

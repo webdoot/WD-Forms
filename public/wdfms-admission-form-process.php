@@ -52,7 +52,14 @@ function wdfms_admission_form_process(){
        	}
        	
        	// response
-        wp_send_json( 'success', 200);                 
+       	$response = array(
+	       					'status'  => 'success',
+	       					'submit_id' => $new_entry_id,
+	       					'mobile'  => $fields['mobile']
+       					);
+      
+        wp_send_json_success( $response, 200);  
+
 		
     } 	// verify_nonce
     
