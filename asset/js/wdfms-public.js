@@ -19,3 +19,8 @@ function amfmURL(input) {
     	}
     }
 }
+
+// form reset: reset photo
+jQuery('form#admission_form').on('reset', function(e) {
+    jQuery('#amfm_photo').attr('src', '/school/wp-content/plugins/wd-forms/asset/images/default-image.png');
+});
