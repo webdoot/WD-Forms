@@ -13,6 +13,8 @@ function wdfms_public_enqueue () {
 
 	wp_localize_script('wdfms-admission-form-ajax', 'wdfms_ajax', admin_url('admin-ajax.php')); 
 		
+	wp_enqueue_style('dashicons');
+
 	wp_enqueue_style( 'wdfms-public', WDFMS_PLUGIN_URL . '/asset/css/wdfms-public.css', array(), WDFMS_VERSION, 'all' );
 
 	wp_enqueue_script( 'wdfms-public', WDFMS_PLUGIN_URL . '/asset/js/wdfms-public.js', array(), WDFMS_VERSION, true );

@@ -15,6 +15,7 @@ function amfmURL(input) {
 	            jQuery('#amfm_photo').attr('src', e.target.result);
 	        };
 	        reader.readAsDataURL(input.files[0]);
+	        jQuery('#amfm_error').html('');
     	}
     }
 }
