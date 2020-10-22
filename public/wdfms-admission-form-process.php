@@ -15,6 +15,29 @@ function wdfms_admission_form_process(){
 		    $_POST = array_map( 'stripslashes_deep', $_POST );
 		}
 
+		// file handliing
+        if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {  	        
+	        $filename 	   = sanitize_text_field($_FILES["photo"]["name"]);
+	        $file_type     = $_FILES["photo"]["type"]; 
+	        $file_size     = $_FILES["photo"]["size"]; 
+	        $file_tmp_name = $_FILES["photo"]["tmp_name"]; 
+	        // $file_error    = $_FILES["photo"]["error"];
+	    }
+
+	    // check file size
+	    if( $file_size > 200000 || $file_size > wp_max_upload_size() ) {		// change 200000
+			// response
+	       	$response = array(
+		       					'status'  => 'error',
+		       					'message' => 'Uploaded file is too large. '
+	       					);
+      
+        	wp_send_json( $response, 400);  
+	    }
+ 
+	    // upload file
+	    $upload = wp_upload_bits($_FILES['photo']['name'], null, file_get_contents($_FILES['photo']['tmp_name']));  
+
 		// form data
         $fields = [
         	'course'      => sanitize_text_field($_POST['course']) 		,
@@ -32,6 +55,8 @@ function wdfms_admission_form_process(){
 	        'email'	      => sanitize_email	 ($_POST['email']) 			,
 	        'education_q' => sanitize_text_field($_POST['education_q']) ,
 	        'technical_q' => sanitize_text_field($_POST['technical_q']) ,
+	        'agree' 	  => sanitize_text_field($_POST['agree']) 		,
+	        'photo' 	  => $upload['url'] 							,    
         ];
 
 		global $wpdb;
@@ -39,7 +64,7 @@ function wdfms_admission_form_process(){
        	$table = $wpdb->prefix . 'wdfms_forms_data';  
 
        	// form id
-       	$form_id = 2;  
+       	$form_id = 2;  															// change
 
        	// field - form_id max value
 		$max_entry_id = max($wpdb->get_col($wpdb->prepare( "SELECT entry_id FROM {$table}")));
@@ -58,8 +83,7 @@ function wdfms_admission_form_process(){
 	       					'mobile'  => $fields['mobile']
        					);
       
-        wp_send_json_success( $response, 200);  
-
+        wp_send_json( $response, 200);  
 		
     } 	// verify_nonce
     

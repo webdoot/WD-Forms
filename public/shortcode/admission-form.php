@@ -21,9 +21,12 @@ function wdfms_shortcode_admission_form () { ?>
           <div class="w3-half">      
             <select class="w3-select w3-border" name="course">
               <option value="" disabled selected>Choose your course</option>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
+              <option value="D.M.L.T">D.M.L.T</option>
+              <option value="DOTT O.T.A">DOTT O.T.A</option>
+              <option value="Cardiac Tech (ECG)">Cardiac Tech (ECG)</option>
+              <option value="Radiology Technician">Radiology Technician</option>
+              <option value="Sanitary Inspector">Sanitary Inspector</option>
+              <option value="Certificate in Medical Dresser (CMD)">Certificate in Medical Dresser (CMD)</option>
             </select>
           </div>
         </div>
@@ -147,7 +150,7 @@ function wdfms_shortcode_admission_form () { ?>
           </div>         
           <div class="w3-twothird">
             <label>Upload your photo (*) </label>
-            <input type="file" name="photo" accept="image/jpeg, image/png" onchange="amfmURL(this);">
+            <input type="file" name="photo" accept=".jpg, .jpeg, .png" onchange="amfmURL(this);" required>
             <br>
             <label><small>(File format jpg/jpeg/png, max size 200Kb)</small></label>
             <br>
@@ -157,7 +160,7 @@ function wdfms_shortcode_admission_form () { ?>
         
         <div class="w3-row-padding w3-padding-16">
           <div class="w3-col">
-            <input class="w3-check" type="checkbox" >
+            <input class="w3-check" type="checkbox" name="agree" value="1">
             <label>I hereby declare that information mentioned above is true to the best of my knowledge.</label>
           </div>
         </div>
