@@ -8,7 +8,7 @@ class Wdfms_Admin_Menu {
        /// add_submenu_page($parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function)
        add_submenu_page( 'wd-forms', 'All Forms', 'All Forms', 'manage_options', 'wd-forms', array($this, 'all_forms'));
 
-       add_submenu_page( 'wd-forms', 'Add New', 'Add New', 'manage_options', 'wd-forms-add', array($this, 'dashboard'));
+       add_submenu_page( 'wd-forms', 'Entries', 'Entries', 'manage_options', 'wd-forms-entries', array($this, 'entries'));
 
 	}
 
@@ -29,12 +29,8 @@ class Wdfms_Admin_Menu {
 
 
     // add forms page
-    public function add_forms(){ 
-      require_once WDFMS_PLUGIN_DIR . 'admin/page/class-wdfms-admin-add-froms.php'; 
-      $wdfms_admin_add_forms = new Wdfms_Admin_Add_Forms();
-      $students = $wdfms_admin_add_forms->get_items();
-      
-      require_once WDFMS_PLUGIN_DIR . 'admin/page/wdfms-admin-add-froms.php'; 
+    public function entries(){ 
+      include_once WDFMS_PLUGIN_DIR . 'admin/page/entries.php'; 
     }
 
 

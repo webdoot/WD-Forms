@@ -49,8 +49,8 @@ function wdfms_custom_setting_link($links){
  */
 include_once WDFMS_PLUGIN_DIR . 'include/class-wdfms.php';
 if (class_exists('Wdfms')){
-    $wd_forms = new Wdfms();
-    $wd_forms->run();
+    $wdfms = new Wdfms();
+    $wdfms->run();
 }
 
 
