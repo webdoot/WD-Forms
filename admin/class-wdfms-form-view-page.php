@@ -102,17 +102,18 @@ class Wdfms_Entries_Page extends WP_List_Table
          * SEARCH ACTION: 
          * @return $this->items
          */
-        $this->process_search();
-        
+        $search = isset( $_REQUEST['s'] ) ? wp_unslash( trim( $_REQUEST['s'] ) ) : '';
+        if ( '' !== $search ) {
+            $search = "%{$search}%"; 
 
-        // Items from table
-        // $where = $wpdb->prepare( 'WHERE Product LIKE %s OR Application LIKE %s OR Sector LIKE %s', $search, $search, $search );
-        // $total_items = $wpdb->get_results( "SELECT * FROM {$table_name} {$where}", ARRAY_A );
+            $where = $wpdb->prepare( 'WHERE form_id LIKE %s OR entry_id LIKE %s OR field LIKE %s OR value LIKE %s', $search, $search, $search, $search );
 
-        
-
-        // $total_items = $wpdb->get_results( "SELECT * FROM {$table_name}", ARRAY_A );
-
+            $this->items = $wpdb->get_results( "SELECT * FROM {$table_name} {$where}", ARRAY_A );
+        }
+        else {
+            $this->items = $wpdb->get_results( "SELECT * FROM {$table_name}", ARRAY_A );
+        }
+ 
         // Find role
         // $role = isset( $_REQUEST['role'] ) ? $_REQUEST['role'] : '';     
 
@@ -136,8 +137,6 @@ class Wdfms_Entries_Page extends WP_List_Table
 
         // SEARCH BOX
         $this->search_box('Search', 'search_id');
-
-
     }
 
     /* 
@@ -227,34 +226,11 @@ class Wdfms_Entries_Page extends WP_List_Table
     }
 
     /*
-     * Search Action Process
-     * @return $items after search
-     */
-    public function process_search(){
-        global $wpdb;
-        $table_name = $wpdb->prefix . $this->table_name ; 
-        // Find search term
-        $search = isset( $_REQUEST['s'] ) ? wp_unslash( trim( $_REQUEST['s'] ) ) : '';
-        if ( '' !== $search ) {
-            $search = "%{$search}%"; 
-
-            $where = $wpdb->prepare( 'WHERE form_id LIKE %s OR entry_id LIKE %s OR field LIKE %s OR value LIKE %s', $search, $search, $search, $search );
-
-            return $this->items = $wpdb->get_results( "SELECT * FROM {$table_name} {$where}", ARRAY_A );
-        }
-        else {
-            return $this->items = $wpdb->get_results( "SELECT * FROM {$table_name}", ARRAY_A );
-        }
-    }
-
-
-    /*
      * No Item message
      */  
     function no_items() {
       _e( $this->noitem_msg );
     }
-
 
     /**
      * Add extra markup in the toolbars before or after the list
