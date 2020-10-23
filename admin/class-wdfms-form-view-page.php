@@ -98,9 +98,11 @@ class Wdfms_Entries_Page extends WP_List_Table
         // BULK ACTION
         $this->process_bulk_action();
 
-        // SEARCH ACTION
-        $total_items = $this->process_search();
-
+        /**
+         * SEARCH ACTION: 
+         * @return $this->items
+         */
+        $this->process_search();
         
 
         // Items from table
@@ -115,12 +117,9 @@ class Wdfms_Entries_Page extends WP_List_Table
         // $role = isset( $_REQUEST['role'] ) ? $_REQUEST['role'] : '';     
 
         // SHORTING
-        usort( $total_items, array( &$this, 'usort_reorder' ) ); 
+        usort( $this->items, array( &$this, 'usort_reorder' ) ); 
 
-        // print_r($total_items);
-
-
-        // Get column header
+        // GET COLUMN HEADER
         $columns = $this->get_columns();        
         $hidden = array();
         $sortable = $this->get_sortable();
@@ -128,13 +127,15 @@ class Wdfms_Entries_Page extends WP_List_Table
 
         // PAGINATION     
         $this->set_pagination_args( array(      
-        'total_items' => count($total_items),     
-        'per_page'    => $this->per_page,         
+            'total_items' => count($this->items),     
+            'per_page'    => $this->per_page,         
         ));
         
-        $this->items = array_slice($total_items, (($this->get_pagenum()-1)*$this->per_page), $this->per_page);
+        // PER PAGE ITEM
+        $this->items = array_slice($this->items, (($this->get_pagenum()-1)*$this->per_page), $this->per_page);
 
-        $this->search_box('search', 'search_id');
+        // SEARCH BOX
+        $this->search_box('Search', 'search_id');
 
 
     }
@@ -227,8 +228,7 @@ class Wdfms_Entries_Page extends WP_List_Table
 
     /*
      * Search Action Process
-     * @return Total_Item after search
-     * EDIT: NO.
+     * @return $items after search
      */
     public function process_search(){
         global $wpdb;
@@ -238,12 +238,12 @@ class Wdfms_Entries_Page extends WP_List_Table
         if ( '' !== $search ) {
             $search = "%{$search}%"; 
 
-            $where = $wpdb->prepare( 'WHERE field LIKE %s', $search );
+            $where = $wpdb->prepare( 'WHERE form_id LIKE %s OR entry_id LIKE %s OR field LIKE %s OR value LIKE %s', $search, $search, $search, $search );
 
-            return $total_items = $wpdb->get_results( "SELECT * FROM {$table_name} {$where}", ARRAY_A );
+            return $this->items = $wpdb->get_results( "SELECT * FROM {$table_name} {$where}", ARRAY_A );
         }
         else {
-            return $total_items = $wpdb->get_results( "SELECT * FROM {$table_name}", ARRAY_A );
+            return $this->items = $wpdb->get_results( "SELECT * FROM {$table_name}", ARRAY_A );
         }
     }
 
