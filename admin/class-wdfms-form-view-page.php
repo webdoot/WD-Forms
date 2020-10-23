@@ -36,9 +36,9 @@ class Wdfms_Entries_Page extends WP_List_Table
      */
     protected $columns_sort = array(      
                                     'entry_id'   => array('entry_id', false)  ,
-                                    'form_id'    => array('form_id', false)   , 
-                                    'field'      => array('field', false)     ,
-                                    'created_at' => array('date', false)      ,
+                                    'form_id'    => array('form_id' , false)  , 
+                                    'field'      => array('field'   , false)  ,
+                                    'created_at' => array('date'    , false)  ,
                                 );
     /*
      * Default sortable (single) column. Initial shorting while loading.
@@ -72,8 +72,7 @@ class Wdfms_Entries_Page extends WP_List_Table
 
     public $items   = [];           // Initiate the Items with empty array.
 
-    public function __construct()
-    {
+    public function __construct() {
         /*
          * REQUIERED: Set the Parent Default.
          * EDIT: NO
@@ -132,6 +131,7 @@ class Wdfms_Entries_Page extends WP_List_Table
         'total_items' => count($total_items),     
         'per_page'    => $this->per_page,         
         ));
+        
         $this->items = array_slice($total_items, (($this->get_pagenum()-1)*$this->per_page), $this->per_page);
 
         $this->search_box('search', 'search_id');
@@ -141,6 +141,7 @@ class Wdfms_Entries_Page extends WP_List_Table
 
     /* 
      * column_defaul() & get_columns() must match all attributes.
+     * It takes attribute from columns(). (local edit)
      * EDIT: NO.
      */
     public function column_default( $item, $column_name ) {
@@ -237,7 +238,7 @@ class Wdfms_Entries_Page extends WP_List_Table
         if ( '' !== $search ) {
             $search = "%{$search}%"; 
 
-            $where = $wpdb->prepare( 'WHERE s_name LIKE %s', $search );
+            $where = $wpdb->prepare( 'WHERE field LIKE %s', $search );
 
             return $total_items = $wpdb->get_results( "SELECT * FROM {$table_name} {$where}", ARRAY_A );
         }

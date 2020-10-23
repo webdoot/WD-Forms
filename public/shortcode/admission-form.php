@@ -160,7 +160,7 @@ function wdfms_shortcode_admission_form () { ?>
         
         <div class="w3-row-padding w3-padding-16">
           <div class="w3-col">
-            <input class="w3-check" type="checkbox" name="agree" value="1">
+            <input class="w3-check" type="checkbox" name="agree" value="1" required>
             <label>I hereby declare that information mentioned above is true to the best of my knowledge.</label>
           </div>
         </div>
