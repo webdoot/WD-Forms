@@ -1,6 +1,7 @@
 <?php
 
-class Wdfms_Admin_Menu {
+class Wdfms_Admin_Menu 
+{
 
 	public function menu(){
 		/// add_menu_page($page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position);

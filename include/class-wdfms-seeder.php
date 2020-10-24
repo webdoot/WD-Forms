@@ -4,7 +4,8 @@
  * Table Seeder
  */
 	
-class Wdfms_Seeder {
+class Wdfms_Seeder 
+{
 	
     /* 
      * Seed all tables.

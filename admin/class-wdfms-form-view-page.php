@@ -24,7 +24,7 @@ class Wdfms_Entries_Page extends WP_List_Table
      * Exclude first ID column if not req to display.
      */ 
     protected $columns      = array( 
-                                    'entry_id'   => 'Entry'      ,
+                                    'entry_id'   => '#'          ,
                                     'form_id'    => 'Form ID'    ,
                                     'field'      => 'Fiels'      ,
                                     'created_at' => 'Date'       ,
@@ -97,6 +97,11 @@ class Wdfms_Entries_Page extends WP_List_Table
 
         // BULK ACTION
         $this->process_bulk_action();
+
+        ///-------------------------------------------------///
+        // $entry_ids = $wpdb->get_results($wpdb->prepare('SELECT DISTINCT %1$s.entry_id FROM %2$s', $table_name, $table_name ), ARRAY_A);
+        // print_r($entry_ids);
+        ///-------------------------------------------------///
 
         /**
          * SEARCH ACTION: 

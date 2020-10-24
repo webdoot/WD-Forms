@@ -1,7 +1,8 @@
 <?php
 
 
-class Wdfms_Deactivator {
+class Wdfms_Deactivator 
+{
 
 	public static function deactivate() {
 

@@ -4,7 +4,8 @@
  * Database tables
  */
 	
-class Wdfms_DB {
+class Wdfms_DB 
+{
 	
     /* 
      * Declare all the table name with sql

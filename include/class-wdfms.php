@@ -1,7 +1,8 @@
 <?php
 
 
-class Wdfms {
+class Wdfms 
+{
 
 	/*
      * Admin function loader.
@@ -14,12 +15,15 @@ class Wdfms {
         include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-admin-menu.php';  
                       
         // mics functions
-        include_once WDFMS_PLUGIN_DIR . 'include/wdfms-functions.php'; 
+        // include_once WDFMS_PLUGIN_DIR . 'include/wdfms-functions.php'; 
         
         // load options
-        include_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-options.php'; 
-        $wdfms_options = new Wdfms_Options();       
+        // include_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-options.php'; 
+        // $wdfms_options = new Wdfms_Options();       
         // add_action('admin_init', array($wdfms_option, 'load'));
+
+        // form post type
+        include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-form-handler.php'; 
         
     }
     

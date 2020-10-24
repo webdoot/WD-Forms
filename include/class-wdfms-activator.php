@@ -1,7 +1,8 @@
 <?php
 
 
-class Wdfms_Activator {
+class Wdfms_Activator 
+{
 	
 	public static function activate() {
 

@@ -4,7 +4,8 @@
  * Page manager
  */
 
-class Wdfms_Pages {
+class Wdfms_Pages 
+{
 	// Add pages
 	public static function add(){
 		
