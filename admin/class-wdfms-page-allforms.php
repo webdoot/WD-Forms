@@ -11,11 +11,11 @@ class Wdfms_Page_Allforms extends WP_List_Table
 {
     /* -------------------------- CUSTOMISE------------------------------------ */
 
-    protected $table_name   = 'wdfms_forms_data'    ;   // Table name excluding prefix
-    protected $record_name  = 'entries'             ;   // Name of record (Any thing you give)
-    protected $page_slug    = 'wd-forms-entries'    ;   // Page address
+    protected $table_name   = 'posts'               ;   // Table name excluding prefix
+    protected $record_name  = 'form'               ;   // Name of record (Any thing you give)
+    protected $page_slug    = 'wd-forms'            ;   // Page address
     protected $per_page     = 15                    ;   // Record per page
-    protected $primary_key  = 'id'                  ;   // Primery key of record
+    protected $primary_key  = 'ID'                  ;   // Primery key of record
     protected $noitem_msg   = 'No form entry !!'    ;   // No item Message
 
     /* 
@@ -24,10 +24,9 @@ class Wdfms_Page_Allforms extends WP_List_Table
      * Exclude first ID column if not req to display.
      */ 
     protected $columns      = array( 
-                                    'entry_id'   => '#'          ,
-                                    'form_id'    => 'Form ID'    ,
-                                    'field'      => 'Fiels'      ,
-                                    'created_at' => 'Date'       ,
+                                    'post_title' => 'Forms'          ,
+                                    'ID'         => 'Shortcode'      ,
+                                    'post_date'  => 'Date'           ,
                                 );
     /*
      * Columns required to be sorted. true: ASC, false: DEC or Unordered
@@ -35,17 +34,16 @@ class Wdfms_Page_Allforms extends WP_List_Table
      * Absent of column name result no sorting feature on click at column header.
      */
     protected $columns_sort = array(      
-                                    'entry_id'   => array('entry_id', false)  ,
-                                    'form_id'    => array('form_id' , false)  , 
-                                    'field'      => array('field'   , false)  ,
-                                    'created_at' => array('date'    , false)  ,
+                                    'post_title'  => array('post_title', false)  ,
+                                    'ID'          => array('ID' , false)         , 
+                                    'post_date'   => array('post_date', false)   ,
                                 );
     /*
      * Default sortable (single) column. Initial shorting while loading.
      * Mention one from $colums_sort. Preferably first column.
      * Column Name as in Table.
      */
-    protected $column_sort_default = 'entry_id';
+    protected $column_sort_default = 'post_title';
 
     
     /* 
@@ -53,18 +51,24 @@ class Wdfms_Page_Allforms extends WP_List_Table
      * Display the actions [edit, delete] on a column:
      * On Click action $_GET param: 'page', 'action', 'id'
      */
-    public function column_entry_id($item) {
+    public function column_post_title($item) {
         $actions = array(
             'edit' => sprintf('<a href="?page=%s&action=%s&id=%s">Edit</a>',$_REQUEST['page'],'edit',$item[$this->primary_key]),
             'delete' => sprintf('<a href="?page=%s&action=%s&id=%s">Delete</a>',$_REQUEST['page'],'delete',$item[$this->primary_key]),
         );
-        return sprintf('%1$s %2$s', $item['entry_id'], $this->row_actions($actions) );
+        return sprintf('%1$s %2$s', $item['post_title'], $this->row_actions($actions) );
+    }
+
+    // shortcode.
+    public function column_ID($item) {
+        // return date('d-m-Y', strtotime($item['created_at']));
+        return '[wdforms id="' . $item["ID"] . '"]';
     }
 
     // Date field DOJ formate change.
-    public function column_created_at($item) {
-        // return date('d-m-Y', strtotime($item['created_at']));
-        return $item['created_at'];
+    public function column_post_date($item) {
+        return date('d-m-Y', strtotime($item['post_date']));
+        // return $item['post_date'];
     }
 
 
@@ -95,12 +99,13 @@ class Wdfms_Page_Allforms extends WP_List_Table
         global $wpdb; 
         $table_name = $wpdb->prefix . $this->table_name;
 
-        // BULK ACTION
+        // BULK ACTION (no change)
         $this->process_bulk_action();
 
         ///-------------------------------------------------///
         // $entry_ids = $wpdb->get_results($wpdb->prepare('SELECT DISTINCT %1$s.entry_id FROM %2$s', $table_name, $table_name ), ARRAY_A);
-        // print_r($entry_ids);
+        // print_r();
+
         ///-------------------------------------------------///
 
         /**
@@ -111,36 +116,37 @@ class Wdfms_Page_Allforms extends WP_List_Table
         if ( '' !== $search ) {
             $search = "%{$search}%"; 
 
-            $where = $wpdb->prepare( 'WHERE form_id LIKE %s OR entry_id LIKE %s OR field LIKE %s OR value LIKE %s', $search, $search, $search, $search );
+            $where = $wpdb->prepare( "WHERE post_type=%s AND post_status=%s", 'wpforms', 'publish' );
 
             $this->items = $wpdb->get_results( "SELECT * FROM {$table_name} {$where}", ARRAY_A );
         }
         else {
-            $this->items = $wpdb->get_results( "SELECT * FROM {$table_name}", ARRAY_A );
+            $where = $wpdb->prepare( "WHERE post_type=%s AND post_status=%s", 'wpforms', 'publish' );
+            $this->items = $wpdb->get_results( "SELECT * FROM {$table_name} {$where}", ARRAY_A );
         }
  
         // Find role
         // $role = isset( $_REQUEST['role'] ) ? $_REQUEST['role'] : '';     
 
-        // SHORTING
+        // SHORTING : (no change)
         usort( $this->items, array( &$this, 'usort_reorder' ) ); 
 
-        // GET COLUMN HEADER
+        // GET COLUMN HEADER : (no change)
         $columns = $this->get_columns();        
         $hidden = array();
         $sortable = $this->get_sortable();
         $this->_column_headers = array($columns, $hidden, $sortable);
 
-        // PAGINATION     
+        // PAGINATION : (no change)     
         $this->set_pagination_args( array(      
             'total_items' => count($this->items),     
             'per_page'    => $this->per_page,         
         ));
         
-        // PER PAGE ITEM
+        // PER PAGE ITEM : (no change)
         $this->items = array_slice($this->items, (($this->get_pagenum()-1)*$this->per_page), $this->per_page);
 
-        // SEARCH BOX
+        // SEARCH BOX : (no change)
         $this->search_box('Search', 'search_id');
     }
 

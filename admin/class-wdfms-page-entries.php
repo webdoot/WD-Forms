@@ -37,8 +37,8 @@ class Wdfms_Page_Entries extends WP_List_Table
     protected $columns_sort = array(      
                                     'entry_id'   => array('entry_id', false)  ,
                                     'form_id'    => array('form_id' , false)  , 
-                                    'field'      => array('field'   , false)  ,
-                                    'created_at' => array('date'    , false)  ,
+                                    // 'field'      => array('field'   , false)  ,
+                                    // 'created_at' => array('date'    , false)  ,
                                 );
     /*
      * Default sortable (single) column. Initial shorting while loading.

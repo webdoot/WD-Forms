@@ -23,8 +23,8 @@ class Wdfms_Form_Handler {
 		'rewrite'             => false,
 		'query_var'           => false,
 		'can_export'          => false,
-		'supports'            => array( 'title' ),
-		'capability_type'     => 'wpforms_form', // Not using 'capability_type' anywhere. It just has to be custom for security reasons.
+		'supports'            => array( 'title', 'editor', 'custom-fields' ),
+		'capability_type'     => 'wdforms_form', // Not using 'capability_type' anywhere. It just has to be custom for security reasons.
 		'map_meta_cap'        => false, // Don't let WP to map meta caps to have a granular control over this process via 'map_meta_cap' filter.
 	  );
 	  register_post_type( 'wdforms', $args ); 
