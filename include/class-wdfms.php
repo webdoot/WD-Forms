@@ -37,6 +37,7 @@ class Wdfms
         // shortcodes 
         include_once WDFMS_PLUGIN_DIR . 'public/shortcode/admission-form.php';  
         include_once WDFMS_PLUGIN_DIR . 'public/shortcode/admission-form-view.php'; 
+        include_once WDFMS_PLUGIN_DIR . 'public/wdforms-shortcode-handler.php'; 
 
         // form process
         include_once WDFMS_PLUGIN_DIR . 'public/wdfms-admission-form-process.php';  

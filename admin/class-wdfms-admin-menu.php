@@ -14,14 +14,14 @@ class Wdfms_Admin_Menu
 	}
 
 
-    // all forms page
+    // allforms page
     public function all_forms(){ 
-      // Data
-      require_once WDFMS_PLUGIN_DIR . 'admin/page/class-wdfms-admin-all-forms.php'; 
-      $wdfms_admin_all_forms = new Wdfms_Admin_All_Forms();
-      $wdfms_admin_all_forms->update();
-      // Page
-      require_once WDFMS_PLUGIN_DIR . 'admin/page/wdfms-admin-all-forms.php'; 
+      require_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-page-allforms.php'; 
+      $wdfms_page_allforms = new Wdfms_Page_Allforms();
+      echo '<div class="wrap"><h2>Form Entries</h2><form method="post">';
+      $wdfms_page_allforms->prepare_items(); 
+      $wdfms_page_allforms->display(); 
+      echo '</form></div>'; 
     }
 
 
@@ -31,7 +31,12 @@ class Wdfms_Admin_Menu
 
     // add forms page
     public function entries(){ 
-      include_once WDFMS_PLUGIN_DIR . 'admin/page/entries.php'; 
+      include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-page-entries.php';
+      $wdfms_page_entries = new Wdfms_Page_Entries();
+      echo '<div class="wrap"><h2>Form Entries</h2><form method="post">';
+      $wdfms_page_entries->prepare_items(); 
+      $wdfms_page_entries->display(); 
+      echo '</form></div>'; 
     }
 
 

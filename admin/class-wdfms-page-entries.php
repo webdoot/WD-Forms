@@ -7,7 +7,7 @@ if( ! class_exists( 'WP_List_Table' ) ) {
 /**
  * Student Table Class
  */
-class Wdfms_Entries_Page extends WP_List_Table
+class Wdfms_Page_Entries extends WP_List_Table
 {
     /* -------------------------- CUSTOMISE------------------------------------ */
 
@@ -236,34 +236,6 @@ class Wdfms_Entries_Page extends WP_List_Table
     function no_items() {
       _e( $this->noitem_msg );
     }
-
-    /**
-     * Add extra markup in the toolbars before or after the list
-     * @param string $which, helps you decide if you add the markup after (bottom) or before (top) the list
-     */
-    // public function extra_tablenav( $which ) {
-    //    if ( $which == "top" ){
-    //       //The code that goes before the table is here
-    //       echo"Hello, I'm before the table";
-    //    }
-    //    if ( $which == "bottom" ){
-    //       //The code that goes after the table is there
-    //       echo"Hi, I'm after the table";
-    //    }
-    // }
-
-
-
-    // public function ajax_user_can() {
-    //  if ( $this->is_site_users ) {
-    //      return current_user_can( 'manage_sites' );
-    //  } else {
-    //      return current_user_can( 'list_users' );
-    //  }
-    // }
-
-    
-
 
 }
 
