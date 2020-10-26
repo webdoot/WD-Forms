@@ -95,7 +95,7 @@ class Wdfms_Page_Entries extends WP_List_Table
         global $wpdb; 
         $table_name = $wpdb->prefix . $this->table_name;
 
-        // BULK ACTION
+        // BULK ACTION : (no change)
         $this->process_bulk_action();
 
         ///-------------------------------------------------///
@@ -122,25 +122,25 @@ class Wdfms_Page_Entries extends WP_List_Table
         // Find role
         // $role = isset( $_REQUEST['role'] ) ? $_REQUEST['role'] : '';     
 
-        // SHORTING
+        // SHORTING : (no change)
         usort( $this->items, array( &$this, 'usort_reorder' ) ); 
 
-        // GET COLUMN HEADER
+        // GET COLUMN HEADER : (no change)
         $columns = $this->get_columns();        
         $hidden = array();
         $sortable = $this->get_sortable();
         $this->_column_headers = array($columns, $hidden, $sortable);
 
-        // PAGINATION     
+        // PAGINATION : (no change)
         $this->set_pagination_args( array(      
             'total_items' => count($this->items),     
             'per_page'    => $this->per_page,         
         ));
         
-        // PER PAGE ITEM
+        // PER PAGE ITEM : (no change)
         $this->items = array_slice($this->items, (($this->get_pagenum()-1)*$this->per_page), $this->per_page);
 
-        // SEARCH BOX
+        // SEARCH BOX : (no change)
         $this->search_box('Search', 'search_id');
     }
 

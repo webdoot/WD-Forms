@@ -23,7 +23,7 @@ class Wdfms
         // add_action('admin_init', array($wdfms_option, 'load'));
 
         // form post type
-        include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-form.php'; 
+        include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-forms.php'; 
         
     }
     
