@@ -24,11 +24,11 @@ class Wdfms_Admin_Menu
     } 
 
 
-    // add forms page
+    // entries page
     public function entries(){ 
       include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-page-entries.php';
       $wdfms_page_entries = new Wdfms_Page_Entries();
-      echo '<div class="wrap"><h2>Form Entries</h2><form method="post">';
+      echo '<div class="wrap"><h1 class="wp-heading-inline">Entries</h1><form method="post">';
       $wdfms_page_entries->prepare_items(); 
       $wdfms_page_entries->display(); 
       echo '</form></div>'; 

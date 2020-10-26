@@ -12,7 +12,7 @@ class Wdfms_Page_Allforms extends WP_List_Table
     /* -------------------------- CUSTOMISE------------------------------------ */
 
     protected $table_name   = 'posts'               ;   // Table name excluding prefix
-    protected $record_name  = 'form'               ;   // Name of record (Any thing you give)
+    protected $record_name  = 'form'                ;   // Name of record (Any thing you give)
     protected $page_slug    = 'wd-forms'            ;   // Page address
     protected $per_page     = 15                    ;   // Record per page
     protected $primary_key  = 'ID'                  ;   // Primery key of record
@@ -116,12 +116,12 @@ class Wdfms_Page_Allforms extends WP_List_Table
         if ( '' !== $search ) {
             $search = "%{$search}%"; 
 
-            $where = $wpdb->prepare( "WHERE post_type=%s AND post_status=%s", 'wpforms', 'publish' );
+            $where = $wpdb->prepare( "WHERE post_type=%s AND post_status=%s", 'wdforms', 'publish' );
 
             $this->items = $wpdb->get_results( "SELECT * FROM {$table_name} {$where}", ARRAY_A );
         }
         else {
-            $where = $wpdb->prepare( "WHERE post_type=%s AND post_status=%s", 'wpforms', 'publish' );
+            $where = $wpdb->prepare( "WHERE post_type=%s AND post_status=%s", 'wdforms', 'publish' );
             $this->items = $wpdb->get_results( "SELECT * FROM {$table_name} {$where}", ARRAY_A );
         }
  
