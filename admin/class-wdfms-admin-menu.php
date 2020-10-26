@@ -15,12 +15,12 @@ class Wdfms_Admin_Menu
 
     // allforms page
     public function allforms(){ 
-      require_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-page-allforms.php'; 
-      $wdfms_page_allforms = new Wdfms_Page_Allforms();
-      echo '<div class="wrap"><h1 class="wp-heading-inline">Forms</h1> <a href="' . esc_url( admin_url("post-new.php?post_type=wdforms" ) ) . '" class="page-title-action"> Add New </a> <form method="post">';
-      $wdfms_page_allforms->prepare_items(); 
-      $wdfms_page_allforms->display(); 
-      echo '</form></div>'; 
+      // require_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-page-allforms.php'; 
+      // $wdfms_page_allforms = new Wdfms_Page_Allforms();
+      // echo '<div class="wrap"><h1 class="wp-heading-inline">Forms</h1> <a href="' . esc_url( admin_url("post-new.php?post_type=wdforms" ) ) . '" class="page-title-action"> Add New </a> <form method="post">';
+      // $wdfms_page_allforms->prepare_items(); 
+      // $wdfms_page_allforms->display(); 
+      // echo '</form></div>'; 
     } 
 
 
