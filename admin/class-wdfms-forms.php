@@ -76,7 +76,7 @@ class Wdfms_Forms
 	public function custom_column_heading($columns) {
 		$columns = array(
 			"cb" 	=> "<input type='checkbox' />",
-			"forms" => "Forms",
+			"title" => "Forms",
 			"shortcode" => "Shortcode",
 			"date" 	=> "Date"
 		);
@@ -87,10 +87,6 @@ class Wdfms_Forms
 	// custom column render data 
 	function custom_column_data($column, $post_id){
 		switch ( $column ) {	        
-	        case 'forms'    :
-	            echo get_post_field( 'post_title', $post_id );
-	        break;
-	        
 	        case 'shortcode'    :
 	            echo '[wdfms_form id="' . $post_id . '"]';
 	        break;
