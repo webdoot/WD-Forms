@@ -14,8 +14,10 @@ class Wdfms
         // menu
         include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-admin-menu.php';  
 
-        // form post type
-        include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-forms.php'; 
+        // cpt: "wdfms_form"
+        include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-forms.php';
+        // cpt: "wdfms_form_entry" 
+        include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-forms-entry.php'; 
                       
         // mics functions
         // include_once WDFMS_PLUGIN_DIR . 'include/wdfms-functions.php'; 
