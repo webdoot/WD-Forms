@@ -14,9 +14,9 @@ class Wdfms_Admin_Menu
   // main menu
 	public function menu(){
 		/// add_menu_page($page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position);
-       add_menu_page('WD Forms', 'WD Forms', 'manage_options', 'wdfms-forms', false, 'dashicons-feedback', 66);  //cpt page
+       add_menu_page('WD Forms', 'WD Forms', 'manage_options', 'wdfms_form', false, 'dashicons-feedback', 66);  //cpt page
        /// add_submenu_page($parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function)
-       add_submenu_page( 'wdfms-forms', 'Entries', 'Entries', 'manage_options', 'wd-forms-entries', array($this, 'entries'));
+       add_submenu_page( 'wdfms_form', 'Entries', 'Entries', 'manage_options', 'wdfms_form_entries', array($this, 'entries'));
 
 	}
 

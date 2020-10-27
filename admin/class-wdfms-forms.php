@@ -9,7 +9,8 @@ class Wdfms_Forms
 	public function __construct()
 	{
 		// register cpt
-		$this->register_wdform_cpt();
+		// $this->register_wdform_cpt();
+		add_action("init", array($this, "register_wdform_cpt"));
 
 		// display custom column table heading
 		add_action("manage_wdfms_form_posts_columns", array($this, "custom_column_heading"));	
@@ -55,7 +56,7 @@ class Wdfms_Forms
 	        'exclude_from_search'=> false,				//default=public opposite value
 	        'publicly_queryable' => true,				//default=public value
 	        'show_ui'            => true,				//default=public value
-	        'show_in_menu'       => 'wdfms-forms',		//default=show_ui value
+	        'show_in_menu'       => 'wdfms_form',		//default=show_ui value
 	        'show_in_nav_menus'  => false,				//default=public value
 	        'show_in_admin_bar'  => false,				//default=show_in_menu value
 	        'menu_position'      => 65,
@@ -65,7 +66,7 @@ class Wdfms_Forms
 	        'map_meta_cap'    	 => null,				//default=null
 	        'supports'           => array( 'title', 'editor' ),
 	        'has_archive'        => false,				//default=false
-	        'rewrite'            => false,				//default=true
+	        'rewrite'            => false,	//default=true
 	    );
 
 		register_post_type( "wdfms_form", $args );
