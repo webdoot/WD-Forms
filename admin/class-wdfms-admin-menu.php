@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Menu items
+ */
+
 class Wdfms_Admin_Menu 
 {
   public function __construct()

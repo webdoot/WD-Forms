@@ -11,7 +11,15 @@ function wdfms_public_enqueue () {
 
 	wp_enqueue_script( 'wdfms-admission-form-ajax', WDFMS_PLUGIN_URL . '/asset/js/wdfms-public-admission-form-ajax.js', array('jquery-form'), WDFMS_VERSION, true );
 
-	wp_localize_script('wdfms-admission-form-ajax', 'wdfms_ajax', admin_url('admin-ajax.php')); 
+	// wp_localize_script('wdfms-admission-form-ajax', 'wdfms_ajax', admin_url('admin-ajax.php')); 
+
+	wp_localize_script(	'wdfms-admission-form-ajax',
+						'wdfms_obj', 
+						array( 
+								'ajax_url' 	=> admin_url('admin-ajax.php'),
+								'nonce'		=> wp_create_nonce( "nonce_action" ),
+								// 'id'    	=> $user_id
+							)); 
 		
 	wp_enqueue_style('dashicons');
 

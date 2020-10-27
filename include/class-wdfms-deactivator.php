@@ -15,8 +15,8 @@ class Wdfms_Deactivator
 		// Wdfms_Option::delete();		
 
 		// default page & related option removal 
-		require_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-pages.php';		
-        Wdfms_Pages::remove();
+		// require_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-pages.php';		
+        // Wdfms_Pages::remove();
 
         flush_rewrite_rules();
 

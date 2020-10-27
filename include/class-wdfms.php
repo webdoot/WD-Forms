@@ -13,6 +13,9 @@ class Wdfms
         
         // menu
         include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-admin-menu.php';  
+
+        // form post type
+        include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-forms.php'; 
                       
         // mics functions
         // include_once WDFMS_PLUGIN_DIR . 'include/wdfms-functions.php'; 
@@ -22,8 +25,7 @@ class Wdfms
         // $wdfms_options = new Wdfms_Options();       
         // add_action('admin_init', array($wdfms_option, 'load'));
 
-        // form post type
-        include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-forms.php'; 
+        
         
     }
     

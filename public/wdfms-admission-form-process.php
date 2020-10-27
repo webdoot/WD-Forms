@@ -8,7 +8,7 @@ add_action('wp_ajax_admission_form_submit', 'wdfms_admission_form_process');
 add_action('wp_ajax_nopriv_admission_form_submit', 'wdfms_admission_form_process');       
 
 function wdfms_admission_form_process(){
-	if ( wp_verify_nonce ($_POST['nonce_field'], 'nonce_action' ) ) {
+	if ( wp_verify_nonce ($_REQUEST['_wpnonce'], 'nonce_action' ) ) {
 		
 		// Sritps "\" from the post data.
 		if ( get_magic_quotes_gpc() ) {

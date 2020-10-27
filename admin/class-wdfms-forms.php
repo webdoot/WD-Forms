@@ -8,7 +8,14 @@ class Wdfms_Forms
 {	
 	public function __construct()
 	{
+		// register cpt
 		$this->register_wdform_cpt();
+
+		// display custom column table heading
+		add_action("manage_wdfms_form_posts_columns", array($this, "custom_column_heading"));	
+
+		// custom column table render data
+		add_action("manage_wdfms_form_posts_custom_column", array($this, "custom_column_data"), 10, 2);	
 	}
 
 
@@ -42,7 +49,7 @@ class Wdfms_Forms
 	 
 	    $args = array(
 	        'labels'             => $labels,
-	        'description'		 => 'Wdfms form html',
+	        'description'		 => __('Wdfms form html'),
 	        'public'             => true,
 	        'hierarchical'       => false,				//default=false
 	        'exclude_from_search'=> false,				//default=public opposite value
@@ -64,7 +71,32 @@ class Wdfms_Forms
 		register_post_type( "wdfms_form", $args );
 	}
 
+	// custom column heading
+	public function custom_column_heading($columns) {
+		$columns = array(
+			"cb" 	=> "<input type='checkbox' />",
+			"forms" => "Forms",
+			"shortcode" => "Shortcode",
+			"date" 	=> "Date"
+		);
+		return $columns ;
+	}
+
+
+	// custom column render data 
+	function custom_column_data($column, $post_id){
+		switch ( $column ) {	        
+	        case 'forms'    :
+	            echo get_post_field( 'post_title', $post_id );
+	        break;
+	        
+	        case 'shortcode'    :
+	            echo '[wdfms_form id="' . $post_id . '"]';
+	        break;
+		}
+	}
+
 }
 
-//class initiate
+//class initiate & run
 $wdfms_forms = new Wdfms_Forms();

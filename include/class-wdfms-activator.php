@@ -19,8 +19,8 @@ class Wdfms_Activator
 		// Wdfms_Option::add();	
 
 		// default page creation
-		require_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-pages.php';		
-        Wdfms_Pages::add();
+		// require_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-pages.php';		
+        // Wdfms_Pages::add();
 			
     
 		flush_rewrite_rules();
