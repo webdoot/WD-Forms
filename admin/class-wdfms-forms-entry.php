@@ -16,7 +16,7 @@ class Wdfms_Forms_Entry
 		add_action("manage_wdfms_form_entry_posts_columns", array($this, "custom_column_heading"));	
 
 		// custom column table render data
-		// add_action("manage_wdfms_form_posts_custom_column", array($this, "custom_column_data"), 10, 2);	
+		add_action("manage_wdfms_form_entry_posts_custom_column", array($this, "custom_column_data"), 10, 2);	
 	}
 
 
@@ -77,6 +77,7 @@ class Wdfms_Forms_Entry
 		$columns = array(
 			"cb" 	=> "<input type='checkbox' />",
 			"title" => "Entry",
+			"id"	=> "Submission #",
 			"date" 	=> "Date"
 		);
 		return $columns ;
@@ -86,8 +87,8 @@ class Wdfms_Forms_Entry
 	// custom column render data 
 	function custom_column_data($column, $post_id){
 		switch ( $column ) {	        
-	        case 'shortcode'    :
-	            echo '[wdfms_form id="' . $post_id . '"]';
+	        case 'id'    :
+	            echo $post_id;
 	        break;
 		}
 	}

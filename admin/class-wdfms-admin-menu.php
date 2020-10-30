@@ -16,7 +16,7 @@ class Wdfms_Admin_Menu
 		/// add_menu_page($page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position);
        add_menu_page('WD Forms', 'WD Forms', 'manage_options', 'wdfms_form', false, 'dashicons-feedback', 66);  //cpt page
        /// add_submenu_page($parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function)
-       // add_submenu_page( 'wdfms_form', 'Entries', 'Entries', 'manage_options', 'wdfms_form_entry', false);
+       add_submenu_page( 'wdfms_form', 'Test Page', 'Test Page', 'manage_options', 'wdfms_form_test', array($this, 'test'));
 
 	}
 
@@ -28,6 +28,14 @@ class Wdfms_Admin_Menu
       $wdfms_page_entries->prepare_items(); 
       $wdfms_page_entries->display(); 
       echo '</form></div>'; 
+    }
+
+    // test page
+    public function test(){
+      echo "<h1> This is test page </h1> <br><br>";
+      print "<pre>";
+      print_r($GLOBALS);
+      print "</pre>";      
     }
 
 }

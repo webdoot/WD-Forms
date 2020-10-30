@@ -18,7 +18,7 @@ function wdfms_public_enqueue () {
 						array( 
 								'ajax_url' 	=> admin_url('admin-ajax.php'),
 								'nonce'		=> wp_create_nonce( "nonce_action" ),
-								// 'id'    	=> $user_id
+								'form_id'  	=> wdfms_get_form_id(), //current post_id
 							)); 
 		
 	wp_enqueue_style('dashicons');
