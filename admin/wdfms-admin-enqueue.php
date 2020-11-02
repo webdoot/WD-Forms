@@ -7,13 +7,13 @@
 add_action('admin_enqueue_scripts', 'wdfms_admin_enqueue');     
 function wdfms_admin_enqueue () {
 
-	wp_enqueue_style( 'w3', WDFMS_PLUGIN_URL . '/asset/css/w3.css', array(), WDFMS_VERSION, 'all' ); 
+	// wp_enqueue_style( 'w3', WDFMS_PLUGIN_URL . '/asset/css/w3.css', array(), WDFMS_VERSION, 'all' ); 
 		
-	wp_enqueue_style( 'custom-admin', WDFMS_PLUGIN_URL . '/asset/css/custom-admin.css', array(), WDFMS_VERSION, 'all' );
+	wp_enqueue_style( 'wdfms-admin', WDFMS_PLUGIN_URL . '/asset/css/wdfms-admin.css', array(), WDFMS_VERSION, 'all' );
 
-	wp_register_script( 'jquery-3.4', WDFMS_PLUGIN_URL . '/asset/js/jquery-3.4.1.min.js', array(), WDFMS_VERSION, false );
+	// wp_register_script( 'jquery-3.4', WDFMS_PLUGIN_URL . '/asset/js/jquery-3.4.1.min.js', array(), WDFMS_VERSION, false );
 
-    wp_enqueue_script( 'custom-admin-js', WDFMS_PLUGIN_URL . '/asset/js/custom-admin.js', array(), WDFMS_VERSION, true );
+    wp_enqueue_script( 'custom-admin-js', WDFMS_PLUGIN_URL . '/asset/js/wdfms-admin.js', array(), WDFMS_VERSION, true );
 
 	// Loader only on plugin page
     // if ($GLOBALS['parent_file'] == WDFMS_BASEPAGE) {

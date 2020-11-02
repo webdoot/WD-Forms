@@ -8,15 +8,7 @@ class Wdfms_Deactivator
 
 		// remove tables
 		require_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-db.php';		
-		Wdfms_DB::delete_tables();		
-		
-		// remove options
-		// require_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-option.php';
-		// Wdfms_Option::delete();		
-
-		// default page & related option removal 
-		// require_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-pages.php';		
-        // Wdfms_Pages::remove();
+		Wdfms_DB::delete_tables();	
 
         flush_rewrite_rules();
 
