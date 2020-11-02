@@ -64,16 +64,16 @@ function wdfms_admission_form_process(){
        	$table = $wpdb->prefix . 'wdfms_forms_data';  
 
        	// form id
-       	$form_id = 2;  															// change
+       	$form_id = $_SESSION['wdfms']['form_id'] ;  
 
-       	// field - form_id max value
+       	// New entry id
 		$max_entry_id = max($wpdb->get_col($wpdb->prepare( "SELECT entry_id FROM {$table}")));
 		$max_entry_id = (!empty($max_entry_id)) ? $max_entry_id : 0;
 		$new_entry_id = $max_entry_id + 1;     // new entry id
 
 		// insert into table
 		foreach ($fields as $key => $value) {
-       		$wpdb->insert( $table, array( 'form_id' => $form_id, 'entry_id' => $new_entry_id, 'field' => $key, 'value' => $value ), array( '%d', '%d', '%s', '%s' ) ); 
+       		$wpdb->insert( $table, array( 'entry_id' => $new_entry_id, 'form_id' => $form_id, 'field' => $key, 'value' => $value ), array( '%d', '%d', '%s', '%s' ) ); 
        	}
        	
        	// response
@@ -86,5 +86,17 @@ function wdfms_admission_form_process(){
         wp_send_json( $response, 200);  
 		
     } 	// verify_nonce
+
+    else{
+
+    	// response
+       	$response = array(
+	       					'status'  => 'error',
+	       					'message' => 'Un authorised action. '
+       					);
+      
+        wp_send_json( $response, 403);  
+
+    }
     
 }

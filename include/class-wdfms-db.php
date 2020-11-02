@@ -13,8 +13,8 @@ class Wdfms_DB
     public static $tables = array ( 
       
         "wdfms_forms_data"      => "`id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT , 
-                                    `form_id` INT(10) UNSIGNED NOT NULL , 
-                                    `entry_id` INT(10) UNSIGNED NOT NULL , 
+                                    `entry_id` INT(10) UNSIGNED NOT NULL ,
+                                    `form_id` INT(10) UNSIGNED NOT NULL ,  
                                     `field` VARCHAR(60) NOT NULL ,
                                     `value` LONGTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , 
                                     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, 

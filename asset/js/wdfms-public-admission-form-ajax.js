@@ -3,7 +3,6 @@
  */
 
 jQuery(document).ready(function($){
-    console.log(wdfms_obj.form_id);
   $('form#admission_form').ajaxForm({
 
         url: wdfms_obj.ajax_url + '?_wpnonce=' + wdfms_obj.nonce ,
