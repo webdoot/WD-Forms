@@ -25,14 +25,19 @@ define('WDFMS_PLUGIN_URL', plugins_url() . '/' . WDFMS_BASEPAGE);
 /*
  * Activation.
  */
-include_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-activator.php';
-register_activation_hook( __FILE__, array('Wdfms_Activator', 'activate') );
+register_activation_hook( __FILE__, 'wdfms_activatior' );
+function wdfms_activatior(){
+	flush_rewrite_rules();
+}
+
 
 /*
  * Deactivation.
  */
-include_once WDFMS_PLUGIN_DIR . 'include/class-wdfms-deactivator.php';
-register_deactivation_hook( __FILE__, array('Wdfms_Deactivator', 'deactivate') );
+register_deactivation_hook( __FILE__, 'wdfms_deactivatior' );
+function wdfms_deactivatior(){
+	flush_rewrite_rules();
+}
 
 /*
  * Custom link
@@ -47,7 +52,7 @@ function wdfms_custom_setting_link($links){
 /** 
  * Run plugin
  */
-include_once WDFMS_PLUGIN_DIR . 'include/class-wdfms.php';
+include_once WDFMS_PLUGIN_DIR . 'class-wdfms.php';
 if (class_exists('Wdfms')){
     $wdfms = new Wdfms();
     $wdfms->run();
