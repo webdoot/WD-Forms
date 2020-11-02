@@ -5,7 +5,7 @@
 jQuery(document).ready(function($){
   $('form#admission_form').ajaxForm({
 
-        url: wdfms_obj.ajax_url + '?_wpnonce=' + wdfms_obj.nonce ,
+        url: wdfms_obj.ajax_url + '?_wpnonce=' + wdfms_obj.nonce + '&action=wdfms_form_submit',
 
         success: function(response){
             var application_no = response.submit_id ;

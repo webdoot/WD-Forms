@@ -29,7 +29,7 @@ class Wdfms
         // form handler
         include_once WDFMS_PLUGIN_DIR . 'public/wdforms-form-handler.php'; 
         // form process
-        include_once WDFMS_PLUGIN_DIR . 'public/wdfms-admission-form-process.php';           
+        include_once WDFMS_PLUGIN_DIR . 'public/wdfms-form-process.php';           
     }
     
     public function run(){

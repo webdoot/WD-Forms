@@ -4,10 +4,10 @@
  * Admission form process
  */
 
-add_action('wp_ajax_admission_form_submit', 'wdfms_admission_form_process');              
-add_action('wp_ajax_nopriv_admission_form_submit', 'wdfms_admission_form_process');       
+add_action('wp_ajax_wdfms_form_submit', 'wdfms_form_process');              
+add_action('wp_ajax_nopriv_wdfms_form_submit', 'wdfms_form_process');       
 
-function wdfms_admission_form_process(){
+function wdfms_form_process(){
 	if ( wp_verify_nonce ($_REQUEST['_wpnonce'], 'nonce_action' ) ) {
 		
 		// Sritps "\" from the post data.
@@ -62,24 +62,23 @@ function wdfms_admission_form_process(){
 		global $wpdb;
        	// Table
        	$table = $wpdb->prefix . 'wdfms_forms_data';  
-
-       	// form id
-       	$form_id = $_SESSION['wdfms']['form_id'] ;  
-
-       	// New entry id
-		$max_entry_id = max($wpdb->get_col($wpdb->prepare( "SELECT entry_id FROM {$table}")));
-		$max_entry_id = (!empty($max_entry_id)) ? $max_entry_id : 0;
-		$new_entry_id = $max_entry_id + 1;     // new entry id
-
-		// insert into table
-		foreach ($fields as $key => $value) {
-       		$wpdb->insert( $table, array( 'entry_id' => $new_entry_id, 'form_id' => $form_id, 'field' => $key, 'value' => $value ), array( '%d', '%d', '%s', '%s' ) ); 
-       	}
+		 
+		// Add Product
+		$new_submit = array(
+		    'post_title'   => $fields['name'],
+		    'post_content' => serialize($fields),
+		    'post_type'    => 'wdfms_form_entry',
+		    'post_status'  => 'publish', 
+		    'post_parent'  => $_SESSION['wdfms']['form_id'],
+		);
+		 
+		// Catch submit ID
+		$submit_id = wp_insert_post( $new_submit );
        	
        	// response
        	$response = array(
 	       					'status'  => 'success',
-	       					'submit_id' => $new_entry_id,
+	       					'submit_id' => $submit_id,
 	       					'mobile'  => $fields['mobile']
        					);
       
