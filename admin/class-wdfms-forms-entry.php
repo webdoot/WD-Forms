@@ -75,21 +75,43 @@ class Wdfms_Forms_Entry
 	// custom column heading
 	public function custom_column_heading($columns) {
 		$columns = array(
-			"cb" 	=> "<input type='checkbox' />",
-			"title" => "Entry",
-			"id"	=> "Submission #",
-			"date" 	=> "Date"
+			"cb" 		 => "<input type='checkbox' />",
+			"title"		 => "Form",
+			"name"		 => "Name",
+			"first_col"	 => "Submission Id",
+			"second_col" => "Mobile No",
+			"download" 	 => "Download",
+			"note"	 	 => "Note",
+			"date" 	     => "Date"
 		);
 		return $columns ;
 	}
 
 
 	// custom column render data 
-	function custom_column_data($column, $post_id){
+	public function custom_column_data($column, $post_id){
 		switch ( $column ) {	        
-	        case 'id'    :
-	            echo $post_id;
-	        break;
+	        case 'title' : echo $post_id; break;
+
+	        case 'name'  : echo get_post($post_id)->post_title; break;
+
+	        case 'first_col' : echo $post_id; break;
+
+	        case 'second_col' : 
+	        	if(is_serialized(get_post($post_id)->post_content)){
+	        		$fields = unserialize(get_post($post_id)->post_content);
+	        		echo $fields['mobile'];
+	        	} 
+	        	else { echo '--'; }	        	
+	        	break;
+
+	        case 'download' : 
+	        	echo '<a class="dashicons dashicons-pdf" href="#modal-content" style="font-size: 28px"> </a>'; 
+	        	break;
+
+	        case 'note' : 
+	        	echo '<a class="dashicons dashicons-testimonial" href="#" style="font-size: 28px"> </a>'; 
+	        	break;
 		}
 	}
 
