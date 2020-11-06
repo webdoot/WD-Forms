@@ -29,7 +29,21 @@ function wdfms_admin_enqueue () {
     // }
 
     // A style available in WP               
-    wp_enqueue_style ('wp-jquery-ui-dialog');
-    wp_enqueue_script ('wdfms-dialog', WDFMS_PLUGIN_URL . '/asset/js/wdfms-dialog.js', array('jquery-ui-dialog'), WDFMS_VERSION, true);
-    // https://stackoverflow.com/questions/3196392/jquery-ui-dialog-in-wordpress-admin     
+    // wp_enqueue_style ('wp-jquery-ui-dialog');
+    // wp_enqueue_script ('wdfms-dialog', WDFMS_PLUGIN_URL . '/asset/js/wdfms-dialog.js', array('jquery-ui-dialog'), WDFMS_VERSION, true);
+    // https://stackoverflow.com/questions/3196392/jquery-ui-dialog-in-wordpress-admin    
+
+
+    // Wp ThickBox
+    wp_enqueue_style('thickbox');
+    wp_enqueue_script('thickbox');
+
+
+    // form template manager
+    wp_enqueue_script( 'wdfms-form-tmpl-manager-ajax', WDFMS_PLUGIN_URL . '/asset/js/wdfms-form-tmpl-manager-ajax.js', array('jquery-query'), WDFMS_VERSION, true );
+
+    
+
+
+
 }

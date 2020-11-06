@@ -15,7 +15,15 @@ class Wdfms
         // cpt: "wdfms_form"
         include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-forms.php';
         // cpt: "wdfms_form_entry" 
-        include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-forms-entry.php';          
+        include_once WDFMS_PLUGIN_DIR . 'admin/class-wdfms-forms-entry.php';  
+
+        // Wp ThickBox
+        add_action('admin_footer', array($this, 'admin_footer_section'));
+
+        // form process
+        include_once WDFMS_PLUGIN_DIR . 'admin/wdfms-form-tmpl-manager.php';    
+        
+
     }
     
     /*
@@ -43,5 +51,10 @@ class Wdfms
             session_start();
         } 
     }
+
+    // Wp ThickBox
+    public function admin_footer_section() {           
+        echo '<div id="wdfms-template" style="display:none;"> </div>' ;
+    } 
 
 }

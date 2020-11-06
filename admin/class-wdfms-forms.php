@@ -78,6 +78,7 @@ class Wdfms_Forms
 			"cb" 	=> "<input type='checkbox' />",
 			"title" => "Forms",
 			"shortcode" => "Shortcode",
+			"template"  => "Template",
 			"date" 	=> "Date"
 		);
 		return $columns ;
@@ -89,7 +90,10 @@ class Wdfms_Forms
 		switch ( $column ) {	        
 	        case 'shortcode'    :
 	            echo '[wdfms_form id="' . $post_id . '"]';
-	        break;
+	        	break;
+	        case 'template'    :
+	            echo '<button type="button" class="button wdfms-form-tmpl" data-id=' . $post_id . '>' . wp_trim_words(get_post($post_id)->post_content_filtered, 5)  . ' <span class="dashicons dashicons-edit-large alignright"></span> </button>' ;
+	        	break;
 		}
 	}
 

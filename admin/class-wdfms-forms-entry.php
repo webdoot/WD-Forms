@@ -2,7 +2,7 @@
 
 
 /**
- * WD Form  Entry
+ * CPT: "wdfms_form_entry"
  */
 class Wdfms_Forms_Entry
 {	
@@ -62,9 +62,9 @@ class Wdfms_Forms_Entry
 	        'menu_position'      => 65,
 	        'menu_icon'       	 => null,				//default=null
 	        'capability_type'    => 'post',
-	     	// 'capabilities'    	 => array( 'create_posts' => 'do_not_allow' ),	
-	        'map_meta_cap'    	 => null,				//default=null
-	        'supports'           => array( 'title', 'editor' ),				//array( 'title', 'editor' )
+	     	'capabilities'    	 => array( 'create_posts' => 'do_not_allow' ),	
+	        'map_meta_cap'    	 => true,				//default=null
+	        'supports'           => array( 'title' ),				//array( 'title', 'editor' )
 	        'has_archive'        => false,				//default=false
 	        'rewrite'            => false,	//default=true
 	    );
@@ -106,7 +106,7 @@ class Wdfms_Forms_Entry
 	        	break;
 
 	        case 'download' : 
-	        	echo '<a class="dashicons dashicons-pdf" href="#modal-content" style="font-size: 28px"> </a>'; 
+	        	echo '<a href="#TB_inline?&width=300&height=300&inlineId=my-content-id" class="thickbox">View Now</a>'; 
 	        	break;
 
 	        case 'note' : 
