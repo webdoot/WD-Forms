@@ -13,7 +13,7 @@ function wdfms_admin_enqueue () {
 
 	// wp_register_script( 'jquery-3.4', WDFMS_PLUGIN_URL . '/asset/js/jquery-3.4.1.min.js', array(), WDFMS_VERSION, false );
 
-    wp_enqueue_script( 'custom-admin-js', WDFMS_PLUGIN_URL . '/asset/js/wdfms-admin.js', array(), WDFMS_VERSION, true );
+    wp_enqueue_script( 'custom-admin', WDFMS_PLUGIN_URL . '/asset/js/wdfms-admin.js', array(), WDFMS_VERSION, true );
 
 	// Loader only on plugin page
     // if ($GLOBALS['parent_file'] == WDFMS_BASEPAGE) {
@@ -23,7 +23,8 @@ function wdfms_admin_enqueue () {
 
     // 	wp_enqueue_script( 'pace-min-js', WDFMS_PLUGIN_URL . '/asset/js/pace.min.js', array(), WDFMS_VERSION, false ); 
 
-    // 	wp_enqueue_script( 'notify-min-js', WDFMS_PLUGIN_URL . '/asset/js/notify.min.js', array('jquery-3.4'), WDFMS_VERSION, false ); 
+    // notification
+    wp_enqueue_script( 'notify-min', WDFMS_PLUGIN_URL . '/asset/js/notify.js', array('jquery'), WDFMS_VERSION, true ); 
 
     // 	wp_enqueue_script( 'dataTable-js', WDFMS_PLUGIN_URL . '/asset/js/dataTables.min.js', array('jquery-3.4'), WDFMS_VERSION, true ); 
     // }
@@ -40,7 +41,7 @@ function wdfms_admin_enqueue () {
 
 
     // form template manager
-    wp_enqueue_script( 'wdfms-form-tmpl-manager-ajax', WDFMS_PLUGIN_URL . '/asset/js/wdfms-form-tmpl-manager-ajax.js', array('jquery-query'), WDFMS_VERSION, true );
+    wp_enqueue_script( 'wdfms-form-tmpl-manager-ajax', WDFMS_PLUGIN_URL . '/asset/js/wdfms-form-tmpl-manager-ajax.js', array('jquery-form'), WDFMS_VERSION, true );
 
     
 

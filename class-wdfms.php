@@ -21,7 +21,7 @@ class Wdfms
         add_action('admin_footer', array($this, 'admin_footer_section'));
 
         // form process
-        include_once WDFMS_PLUGIN_DIR . 'admin/wdfms-form-tmpl-manager.php';    
+        include_once WDFMS_PLUGIN_DIR . 'admin/wdfms-form-tmpl-manage.php';    
         
 
     }
@@ -54,7 +54,7 @@ class Wdfms
 
     // Wp ThickBox
     public function admin_footer_section() {           
-        echo '<div id="wdfms-template" style="display:none;"> </div>' ;
+        echo '<div id="wdfms_tb" style="display:none;"> <p></p> </div>' ;
     } 
 
 }

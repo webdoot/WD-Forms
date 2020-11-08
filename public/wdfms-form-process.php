@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Admission form process
+ * wp_ajax_(action): Admission form process
  */
 
 add_action('wp_ajax_wdfms_form_submit', 'wdfms_form_process');              
